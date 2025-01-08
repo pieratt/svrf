@@ -1,4 +1,4 @@
-import { Lander } from "@/pages/Lander";
+import { Lander } from "@/components/Lander";
 
 export default function Home() {
   return <Lander />;
