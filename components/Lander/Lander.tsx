@@ -14,7 +14,7 @@ export default function Lander() {
         <title>SVRF — Beautiful Internet</title>
         <meta
           name="description"
-          content="A new social network from the founder of Svpply."
+          content="A new social network from the founder of SVPPLY."
         />
       </Head>
       <Gradient />
