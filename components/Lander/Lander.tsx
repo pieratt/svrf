@@ -5,6 +5,7 @@ import FeatureList from "./FeatureList";
 import SectionHeader from "./SectionHeader";
 import { PRIMARY_TEXT, SECONDARY_TEXT } from "./constants";
 import Link from "next/link";
+import Gradient from "./Gradient";
 
 export default function Lander() {
   return (
@@ -16,16 +17,8 @@ export default function Lander() {
           content="A new social network from the founder of Svpply."
         />
       </Head>
-
-      <main
-        className="min-h-screen 
-                       bg-gradient-to-t 
-                       from-[#525252] 
-                       via-[#000000] 
-                       to-[#000000] 
-                       text-white 
-                       font-sans"
-      >
+      <Gradient />
+      <main className="relative min-h-screen">
         <div className="flex flex-col items-center justify-center px-4 py-60 space-y-48">
           <Hero />
 
