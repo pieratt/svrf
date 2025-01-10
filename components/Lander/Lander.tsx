@@ -94,7 +94,7 @@ export default function Lander() {
               Members who are selected as Editors.
             </p>
             <p className={PRIMARY_TEXT}>
-              Follow <Link href="https://svrf.co">@SVRFco</Link>
+              Follow <Link href="https://x.com/SVRFco">@SVRFco</Link>
               <br />
               for updates.
             </p>
