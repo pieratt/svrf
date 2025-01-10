@@ -9,7 +9,7 @@ export default function Hero() {
       <Link href="/">
         <HeroButton>SVRF</HeroButton>
       </Link>
-      <h1 className="pt-3 font-serif uppercase text-5xl tracking-widest">
+      <h1 className="pt-3 font-serif text-center uppercase text-5xl tracking-widest">
         Beautiful Internet
       </h1>
       <p className={clsx(SECONDARY_TEXT, "text-center")}>
