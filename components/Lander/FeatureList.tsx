@@ -10,11 +10,11 @@ export default function FeatureList({
   features: React.ReactNode[];
 }) {
   return (
-    <div className="space-y-2">
+    <div className="space-y-1.5">
       <SectionHeader>{title}</SectionHeader>
-      <div className="space-y-2 pt-2">
+      <div className="space-y-1.5 pt-1.5">
         <p className={SECONDARY_TEXT}>Includes:</p>
-        <ul className={clsx("list-none space-y-2", SECONDARY_TEXT)}>
+        <ul className={clsx("list-none space-y-1", SECONDARY_TEXT)}>
           {features.map((feature, index) => (
             <li key={index}>{feature}</li>
           ))}
