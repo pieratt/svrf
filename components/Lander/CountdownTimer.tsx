@@ -2,56 +2,60 @@
 
 import { useEffect, useState } from "react";
 
-// Set the start time to 7pm EST today
-const getEndDate = () => {
-  const today = new Date();
-  const endDate = new Date(today);
-  endDate.setHours(19, 0, 0, 0); // 7pm
-  
-  // If it's already past 7pm today, start from tomorrow
-  if (today > endDate) {
-    endDate.setDate(endDate.getDate() + 1);
-  }
-  
-  // Add 30 days
-  endDate.setDate(endDate.getDate() + 30);
-  return endDate;
-};
+const START_DATE = new Date('2024-01-21T12:00:00-05:00').getTime(); // EST
+const END_DATE = new Date('2024-02-19T12:00:00-05:00').getTime(); // EST
 
-const END_DATE = getEndDate();
+export function getTotalDays() {
+  const now = Date.now();
+  if (now < START_DATE) {
+    return Math.ceil((END_DATE - START_DATE) / (1000 * 60 * 60 * 24));
+  }
+  if (now > END_DATE) {
+    return 0;
+  }
+  return Math.ceil((END_DATE - now) / (1000 * 60 * 60 * 24));
+}
 
 export default function CountdownTimer() {
-  const [timeLeft, setTimeLeft] = useState<number>(0);
+  const [now, setNow] = useState(() => Date.now());
 
   useEffect(() => {
-    const calculateTimeLeft = () => {
-      const now = new Date();
-      const difference = END_DATE.getTime() - now.getTime();
-      return Math.max(0, Math.floor(difference / 1000));
-    };
-
-    // Initial calculation
-    setTimeLeft(calculateTimeLeft());
-
-    // Update every second
     const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
+      setNow(Date.now());
     }, 1000);
 
     return () => clearInterval(timer);
   }, []);
 
-  const days = Math.floor(timeLeft / (24 * 60 * 60));
-  const hours = Math.floor((timeLeft % (24 * 60 * 60)) / (60 * 60));
-  const minutes = Math.floor((timeLeft % (60 * 60)) / 60);
-  const seconds = timeLeft % 60;
+  // If we're before the start date, count down to start
+  if (now < START_DATE) {
+    const difference = START_DATE - now;
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-  // Pad numbers with zeros
-  const pad = (num: number) => num.toString().padStart(2, '0');
+    return (
+      <span className="inline-block">
+        Starts in: {days}d {hours.toString().padStart(2, '0')}h {minutes.toString().padStart(2, '0')}m {seconds.toString().padStart(2, '0')}s
+      </span>
+    );
+  }
+
+  const difference = END_DATE - now;
+  
+  if (difference <= 0) {
+    return <span className="inline-block">Ended</span>;
+  }
+
+  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
   return (
     <span className="inline-block">
-      {pad(days)}d {pad(hours)}h {pad(minutes)}m {pad(seconds)}s
+      {days}d {hours.toString().padStart(2, '0')}h {minutes.toString().padStart(2, '0')}m {seconds.toString().padStart(2, '0')}s
     </span>
   );
 } 

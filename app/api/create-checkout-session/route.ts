@@ -9,6 +9,12 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2024-12-18.acacia',
 });
 
+type StripeError = {
+  message?: string;
+  type?: string;
+  code?: string;
+};
+
 export async function POST(req: Request) {
   try {
     const { priceId } = await req.json();
@@ -40,18 +46,19 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ sessionId: session.id });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const stripeError = error as StripeError;
     console.error('Stripe error:', {
-      message: error.message,
-      type: error.type,
-      code: error.code,
+      message: stripeError.message,
+      type: stripeError.type,
+      code: stripeError.code,
     });
 
     return NextResponse.json(
       { 
-        error: error.message || 'Error creating checkout session',
-        code: error.code,
-        type: error.type
+        error: stripeError.message || 'Error creating checkout session',
+        code: stripeError.code,
+        type: stripeError.type
       },
       { status: 500 }
     );

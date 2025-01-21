@@ -13,18 +13,16 @@ export default function PillButton({
   colors: [bgColor, textColor],
   size = 'sm',
   disableHover = false,
-  className,
-  children,
   ...props
 }: PillButtonProps) {
   const sizeClasses = {
-    sm: "px-8 py-1.5 text-sm",
-    lg: "px-12 py-1.5 text-sm"
+    sm: "px-6 py-1.5 md:px-6 md:py-3 text-sm",
+    lg: "px-8 py-1.5 md:px-8 md:py-3 text-sm"
   };
 
   return (
     <button
-      className={`rounded-full transition-colors duration-200 ease-in-out font-inconsolata ${sizeClasses[size]}`}
+      className={`transition-colors duration-200 ease-in-out font-inconsolata ${sizeClasses[size]}`}
       style={{
         backgroundColor: bgColor,
         color: textColor,
@@ -45,7 +43,7 @@ export default function PillButton({
       }}
       {...props}
     >
-      {children}
+      {props.children}
     </button>
   );
 } 

@@ -6,8 +6,8 @@ export type ColorCombo = [string, string];
 
 export const PRICE_BUTTON_COLORS: { [key: string]: ColorCombo } = {
   svrf: ['#FFFFFF', '#000000'], // White & Black for main SVRF button
-    member: ['#9d7eff', '#1e11c9'], // Electric indigo & Lime
-    editor: ['#5d0096', '#FF3366'], // Hot pink & Turquoise
+    member: ['#a69e96', '#ab306b'], // Electric indigo & Lime
+    editor: ['#ab306b', '#a69e96'], // Hot pink & Turquoise
 };
 
 // Editor username color combinations

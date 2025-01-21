@@ -5,6 +5,12 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
   apiVersion: '2023-10-16', // Use an older API version for better compatibility
 });
 
+type StripeError = {
+  message?: string;
+  type?: string;
+  code?: string;
+};
+
 export async function redirectToCheckout(priceId: string) {
   try {
     const stripe = await stripePromise;
@@ -39,8 +45,9 @@ export async function redirectToCheckout(priceId: string) {
       console.error('Stripe redirect error:', result.error);
       throw new Error(result.error.message);
     }
-  } catch (error: any) {
-    console.error('Checkout error:', error);
-    alert(error.message || 'An error occurred during checkout. Please try again.');
+  } catch (error: unknown) {
+    const stripeError = error as StripeError;
+    console.error('Checkout error:', stripeError);
+    alert(stripeError.message || 'An error occurred during checkout. Please try again.');
   }
 } 
