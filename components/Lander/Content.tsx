@@ -195,10 +195,9 @@ export default function Content() {
           <span>question by</span>
           <Link href="https://x.com/chelsea" target="_blank" rel="noopener noreferrer" className="text-[#cbc5a3]/70 hover:text-[#cbc5a3] transition-colors duration-200">@chelsea</Link>
 
-          <span>urls</span>
-          <span className="text-[#cbc5a3]">{links.length}</span>
+          
 
-          <span>users</span>
+          <span>answers by</span>
           <div className="flex flex-wrap gap-x-1">
             {Array.from(new Set(links.map(link => JSON.stringify({ name: link.author.name, url: link.author.url }))))
               .map(userStr => JSON.parse(userStr))
@@ -223,6 +222,9 @@ export default function Content() {
                 </span>
               ))}
           </div>
+
+          <span>urls</span>
+          <span className="text-[#cbc5a3]">{links.length}</span>
 
           <span>date post</span>
           <span className="text-[#cbc5a3]">2/28-3/9/25</span>
