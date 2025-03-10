@@ -17,6 +17,7 @@ const config: Config = {
         mono: ['var(--font-panama-mono)'],
         serif: ['var(--font-panama)'],
         'inconsolata': ['var(--font-inconsolata)'],
+        'dm-sans': ['var(--font-dm-sans)'],
       },
     },
   },

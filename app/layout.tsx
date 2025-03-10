@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Inconsolata } from 'next/font/google';
+import { Inconsolata, DM_Sans } from 'next/font/google';
 import "./globals.css";
 
 const panama = localFont({
@@ -40,6 +40,11 @@ const inconsolata = Inconsolata({
   variable: '--font-inconsolata',
 });
 
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  variable: '--font-dm-sans',
+});
+
 export const metadata: Metadata = {
   title: "SVRF — Beautiful Internet",
   description: "A new social network from the founder of SVPPLY.",
@@ -52,7 +57,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${panama.variable} ${panamaMono.variable} ${inconsolata.variable}`}>
+      <body className={`${panama.variable} ${panamaMono.variable} ${inconsolata.variable} ${dmSans.variable}`}>
         {children}
       </body>
     </html>

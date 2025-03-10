@@ -1,31 +1,43 @@
 'use client';
 
+import { useState } from "react";
+import Content from "./Content";
 import Link from "next/link";
 import Logo from "./Logo";
-import { SECONDARY_TEXT } from "./constants";
 
 export default function Hero() {
+  const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
+
   return (
     <div className="space-y-16">
-      <div>
-        <Link href="/">
-          <Logo />
-        </Link>
-      </div>
+      <Content />
 
-      <div className="space-y-8 pt-4">
-        <p className={SECONDARY_TEXT}>
-          <span className="text-white">SVRF is a</span> human-made, link-friendly, profit-sharing, soul-searching, invitation-only, not-for-everyone, independently-owned, business-model-having, personal-hero-following, <span className="text-white">new social network of the web&apos;s best editors and members.</span>
-        </p>
+      <div className="space-y-8">
+        <div 
+          onClick={() => setIsDescriptionVisible(!isDescriptionVisible)}
+          className="cursor-pointer"
+        >
+          <Link href="/" onClick={(e) => e.preventDefault()}>
+            <Logo />
+          </Link>
+        </div>
 
-        <p className={SECONDARY_TEXT}>
-          <span className="text-white">Membership and Editor Applications are open for 30 days then will close indefinitely</span>. If this sounds good to you, I hope you&apos;ll apply.
-        </p>
-
-        <p className={SECONDARY_TEXT}>
-          — Ben Pieratt<br />
-          1/20/25
-        </p>
+        <div 
+          className={`overflow-hidden transition-all duration-300 ${
+            isDescriptionVisible 
+              ? 'max-h-[500px] opacity-100' 
+              : 'max-h-0 opacity-0'
+          }`}
+        >
+          <div className="space-y-4">
+            <div className="grid grid-cols-[100px,1fr] gap-x-4 gap-y-2">
+              <span></span>
+              <p className="text-[#cbc5a3] font-dm-sans text-lg">
+                SVRF is a new home for web locals. Membership is closed until further notice, there is no mailing list. Thank you for visiting.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

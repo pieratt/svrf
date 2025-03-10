@@ -8,7 +8,7 @@ export default function Success() {
     <>
       <Gradient />
       <main className="relative min-h-screen">
-        <div className="flex flex-col max-w-[600px] mx-auto px-4 py-32 space-y-16">
+        <div className="flex flex-col max-w-[700px] mx-auto px-4 py-32 space-y-16">
           <div>
             <Link href="/">
               <Logo />
