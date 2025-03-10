@@ -47,7 +47,7 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: "SVRF — Beautiful Internet",
-  description: "A new social network from the founder of SVPPLY.",
+  description: "SVRF Local Web 🌊🕸️.",
 };
 
 export default function RootLayout({

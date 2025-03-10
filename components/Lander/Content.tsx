@@ -59,7 +59,7 @@ export default function Content() {
         { text: "new sync engine that really speaks to me. a lot of the web can feel so much snappier with tech like this" }
       ],
       author: {
-        name: "dicky-the-benevolent-god",
+        name: "dandankis",
         url: "https://x.com/dandankis"
       }
     },
@@ -86,7 +86,7 @@ export default function Content() {
       ],
       author: {
         name: "misha",
-        url: "https://x.com/misha"
+        url: "https://x.com/mishaderidder"
       }
     },
     { 
@@ -199,7 +199,30 @@ export default function Content() {
           <span className="text-[#cbc5a3]">{links.length}</span>
 
           <span>users</span>
-          <span className="text-[#cbc5a3]">7</span>
+          <div className="flex flex-wrap gap-x-1">
+            {Array.from(new Set(links.map(link => JSON.stringify({ name: link.author.name, url: link.author.url }))))
+              .map(userStr => JSON.parse(userStr))
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((author, i, arr) => (
+                <span key={i}>
+                  {author.url ? (
+                    <Link 
+                      href={author.url}
+                      target="_blank"
+                      rel="noopener noreferrer" 
+                      className="text-[#cbc5a3]/70 hover:text-[#cbc5a3] transition-colors duration-200"
+                    >
+                      {author.name}
+                    </Link>
+                  ) : (
+                    <span className="text-[#cbc5a3]/70">
+                      {author.name}
+                    </span>
+                  )}
+                  {i < arr.length - 1 && ", "}
+                </span>
+              ))}
+          </div>
 
           <span>date post</span>
           <span className="text-[#cbc5a3]">2/28-3/9/25</span>
