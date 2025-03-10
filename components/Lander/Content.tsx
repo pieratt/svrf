@@ -47,7 +47,7 @@ export default function Content() {
         { text: "I think genuine ethical responsibility includes not just caution, but also courage to explore controversial ideas. If people continue questioning vague moral concerns it will show that innovation and ethical reflection aren't mutually exclusive. The main obstacles of many (not all) scientific breakthroughs are not technological or intellectual, but rather ethical." }
       ],
       author: {
-        name: "@Artem G",
+        name: "@ArtemG",
         url: ""
       }
     },
@@ -73,7 +73,7 @@ export default function Content() {
         { text: "which is interesting i guess. i think id argue that those smaller subproblems you are generalisably solving are actually much more interesting. like you could argue the iphone robustly generalises to the future of computing, kinda interesting" }
       ],
       author: {
-        name: "@Albert",
+        name: "@thebison505",
         url: "https://x.com/thebison505"
       }
     },
@@ -98,8 +98,8 @@ export default function Content() {
         { text: "schrödingers view of the world he references the vedas" }
       ],
       author: {
-        name: "misha",
-        url: "https://x.com/mishaderidder"
+        name: "tobeistobreathe",
+        url: "https://x.com/tobeistobreathe"
       }
     },
     {
